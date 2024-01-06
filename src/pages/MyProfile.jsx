@@ -130,7 +130,7 @@ const MyProfile = () => {
               <img
                 src={post.postImage}
                 alt={post.postTitle}
-                className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                className="w-[150px] h-[150px] rounded-[10px] object-cover"
               />
             </div>
             <div className="flex flex-col gap-4">

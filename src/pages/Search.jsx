@@ -20,11 +20,15 @@ const Search = () => {
   const [posts, setPosts] = useState([]);
 
   const handleSearchPost = () => {
-    const searchParam = posts.filter((post) => {
-      const lowerCasePostTitle = post.postTitle.toLowerCase().trim();
-      const lowerCaseSearchValue = searchValue.toLowerCase().trim();
-      return lowerCasePostTitle.includes(lowerCaseSearchValue);
-    });
+    const searchParam = posts.filter((post) => post.postTitle && post.postTitle.toLowerCase().includes(searchValue));
+    // const searchParam = posts.filter((post) =>
+    //   post.postTitle.toLowerCase().includes(searchValue)
+    // );
+    // const searchParam = posts.filter((post) => {
+    //   const lowerCasePostTitle = post.postTitle.toLowerCase().trim();
+    //   const lowerCaseSearchValue = searchValue.toLowerCase().trim();
+    //   return lowerCasePostTitle.includes(lowerCaseSearchValue);
+    // });
 
     if (searchParam.length === 0) {
       setNoResults(true);
@@ -120,7 +124,7 @@ const Search = () => {
                 <img
                   src={post.postImage}
                   alt={post.postTitle}
-                  className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                  className="w-[150px] h-[150px] rounded-[10px] object-cover"
                 />
               </div>
               <div className="flex flex-col gap-4">

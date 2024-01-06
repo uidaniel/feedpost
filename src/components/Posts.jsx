@@ -87,11 +87,11 @@ const Posts = () => {
   }, [posts]);
 
   return (
-    <div className=" bg-[#fcf7df]">
+    <div className=" bg-[#fcf7df] w-[100%]">
       {!isLoading && (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center w-[100%]">
           {categoryShow == "POLITICS" && (
-            <div className="gap-2 flex flex-col mb-8 bg-[#fcf7df] p-4">
+            <div className="gap-2 flex flex-col mb-8 bg-[#fcf7df] p-4 w-[100%]">
               <div className="flex items-center justify-between">
                 <p className="text-[36px] tracking-tighter text-[#000] font-bold">
                   POLITICS
@@ -119,7 +119,7 @@ const Posts = () => {
                     <img
                       src={post.postImage}
                       alt={post.postTitle}
-                      className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                      className="w-[150px] h-[150px] rounded-[10px] object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4">
@@ -164,7 +164,7 @@ const Posts = () => {
                     <img
                       src={post.postImage}
                       alt={post.postTitle}
-                      className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                      className="w-[150px] h-[150px] rounded-[10px] object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4">
@@ -209,7 +209,7 @@ const Posts = () => {
                     <img
                       src={post.postImage}
                       alt={post.postTitle}
-                      className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                      className="w-[150px] h-[150px] rounded-[10px] object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4">
@@ -254,7 +254,7 @@ const Posts = () => {
                     <img
                       src={post.postImage}
                       alt={post.postTitle}
-                      className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                      className="w-[150px] h-[150px] rounded-[10px] object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4">
@@ -299,7 +299,7 @@ const Posts = () => {
                     <img
                       src={post.postImage}
                       alt={post.postTitle}
-                      className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                      className="w-[150px] h-[150px] rounded-[10px] object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4">
@@ -344,7 +344,7 @@ const Posts = () => {
                     <img
                       src={post.postImage}
                       alt={post.postTitle}
-                      className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                      className="w-[150px] h-[150px] rounded-[10px] object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4">
@@ -389,7 +389,7 @@ const Posts = () => {
                     <img
                       src={post.postImage}
                       alt={post.postTitle}
-                      className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                      className="w-[150px] h-[150px] rounded-[10px] object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4">
@@ -406,7 +406,7 @@ const Posts = () => {
             </div>
           )}
           {categoryShow == "ALL" && (
-            <section className="md:grid md:grid-rows-3 md:grid-cols-3 flex flex-col mt-7 pb-[20px] gap-[30px] md:gap-[80px] md:gap-y-[700px] md:px-12 px-4 h-[100vh] bg-[#fcf7df] md:">
+            <section className="md:grid md:grid-rows-3 md:grid-cols-3 flex flex-col mt-7 pb-[20px] gap-[30px] md:gap-[80px] md:gap-y-[700px] md:px-12 px-4 h-[100vh] bg-[#fcf7df] w-[100%]">
               <div
                 className="w-[100%] md:bg-black bg-black pb-[35px] rounded-[10px]"
                 onClick={() => {
@@ -495,7 +495,7 @@ const Posts = () => {
                       <img
                         src={post.postImage}
                         alt={post.postTitle}
-                        className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                        className="w-[150px] h-[150px] rounded-[10px] object-cover"
                       />
                     </div>
                     <div className="flex flex-col gap-4">
@@ -540,7 +540,7 @@ const Posts = () => {
                       <img
                         src={post.postImage}
                         alt={post.postTitle}
-                        className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                        className="w-[150px] h-[150px] rounded-[10px] object-cover"
                       />
                     </div>
                     <div className="flex flex-col gap-4">
@@ -585,7 +585,7 @@ const Posts = () => {
                       <img
                         src={post.postImage}
                         alt={post.postTitle}
-                        className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                        className="w-[150px] h-[150px] rounded-[10px] object-cover"
                       />
                     </div>
                     <div className="flex flex-col gap-4">
