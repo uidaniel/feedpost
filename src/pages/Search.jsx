@@ -16,8 +16,8 @@ const Search = () => {
   const [emptySearch, setEmptySearch] = useState(true);
   const [noResults, setNoResults] = useState(false)
 
-  // const posts = useSelector((state)=> state.posts)
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector((state)=> state.posts)
+  // const [posts, setPosts] = useState([]);
 
   const handleSearchPost = () => {
     const searchParam = posts.filter((post) =>
@@ -36,25 +36,25 @@ const Search = () => {
     
   };
 
-  const theFirebase = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(firestore, "posts"));
-      const newPosts = [];
+  // const theFirebase = async () => {
+  //   try {
+  //     const querySnapshot = await getDocs(collection(firestore, "posts"));
+  //     const newPosts = [];
 
-      querySnapshot.forEach((doc) => {
-        newPosts.push(doc.data());
-      });
+  //     querySnapshot.forEach((doc) => {
+  //       newPosts.push(doc.data());
+  //     });
 
-      setPosts(newPosts);
-      console.log(posts);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //     setPosts(newPosts);
+  //     console.log(posts);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    theFirebase();
+    // theFirebase();
   }, []);
 
   return (
