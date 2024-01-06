@@ -225,12 +225,13 @@ const Navbar = () => {
               Contact
             </li>
           </ul>
-          <Link
-            to="/search"
-            className="w-12 h-12 rounded-md bg-[#FFE4E4] flex justify-center items-center"
+          <div onClick={()=> {
+            navigate('/search')
+          }}
+            className="w-12 h-12 rounded-md bg-[#FFE4E4] flex justify-center items-center cursor-pointer"
           >
-            <FiSearch color="#FF2424" size={28} />
-          </Link>
+            <FiSearch color="#FF2424" size={28}/>
+          </div>
           <div className="md:flex md:ms-3 ms-3 flex items-center">
             <Link
               to="/my-profile"
@@ -304,8 +305,12 @@ const Navbar = () => {
               Contact
             </li>
           </ul>
-          <div className="w-12 h-12 rounded-md bg-[#FFE4E4] flex justify-center items-center">
-            <FiSearch color="#FF2424" size={28} />
+          <div className="w-12 h-12 rounded-md bg-[#FFE4E4] flex justify-center items-center cursor-pointer" onClick={()=> {
+            navigate('/search')
+          }}>
+            <FiSearch color="#FF2424" size={28} onClick={()=> {
+              navigate('/search')
+            }}/>
           </div>
           <div className="hidden md:flex ">
             <Link
