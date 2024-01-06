@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Categories from "../components/Categories";
 import Posts from "../components/Posts";
-import { FiEdit3 } from "react-icons/fi";
+import { AiFillEdit } from "react-icons/ai";
 import { motion } from "framer-motion";
 import Marque from "../components/Marque";
 
@@ -48,7 +48,7 @@ const PostIcon = () => {
         }}
       >
         <Link to="/createfeed">
-          <FiEdit3 color="white" size={30} />
+          <AiFillEdit color="white" size={30} />
         </Link>
       </motion.div>
     </div>
