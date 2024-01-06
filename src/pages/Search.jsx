@@ -21,9 +21,6 @@ const Search = () => {
 
   const handleSearchPost = () => {
     
-    const searchParam = posts.filter((post) =>
-      post.postTitle.toLowerCase().includes(searchValue)
-    );
     const searchParam = posts.filter((post) => {
       const lowerCasePostTitle = post.postTitle.toLowerCase().trim();
       const lowerCaseSearchValue = searchValue.toLowerCase().trim();
