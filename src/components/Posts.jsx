@@ -54,7 +54,7 @@ const Posts = () => {
   dispatch(addTechnologyPost(technologyPost));
   dispatch(addEducationPost(educationPost));
 
-  const randomPoliticsPost = politicsPost[politicsPost.length - 1];
+  const randomPoliticsPost = politicsPost[0];
 
   const likes = useSelector((state) => state.likes);
   const comments = useSelector((state) => state.comments);
@@ -606,7 +606,7 @@ const Posts = () => {
       )}
 
       {isLoading && (
-        <div className="w-[100%] flex items-center justify-center h-[100%]">
+        <div className="w-[100%] flex items-center justify-center h-[100vh]">
           <SyncLoader color="#FF2424" />
         </div>
       )}
