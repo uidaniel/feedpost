@@ -20,10 +20,12 @@ const Search = () => {
   const [posts, setPosts] = useState([]);
 
   const handleSearchPost = () => {
-    const searchParam = posts.filter((post) =>
-      post.postTitle.toLowerCase().includes(searchValue)
-    );
-    console.log(searchParam)
+    const searchParam = posts.filter((post) => {
+      const lowerCasePostTitle = post.postTitle.toLowerCase();
+      const lowerCaseSearchValue = searchValue.toLowerCase();
+      return lowerCasePostTitle.includes(lowerCaseSearchValue);
+    });
+    
     if (searchParam.length === 0){
       setNoResults(true)
       setSearch(false)
@@ -110,7 +112,7 @@ const Search = () => {
           </div>
         )}
           <div>
-            {posts.map((post) => (
+            {searchResults.map((post) => (
           <div
             className="flex gap-4 items-center mt-4 mb-6 border-b pb-6 border-[#cccccc]"
             onClick={() => {
