@@ -44,7 +44,6 @@ const Navbar = () => {
         dispatch(userProfilePicture(userData.ProfilePicture));
         dispatch(setUserId(currentUser));
       } else {
-        console.log("User document does not exist");
       }
 
       return () => unsubscribe(); // Detach the listener on component unmount
@@ -144,7 +143,6 @@ const Navbar = () => {
                           })
                           .catch((error) => {
                             // Handle errors if any
-                            console.error("Sign-out error:", error);
                           });
                       }}
                     />
@@ -262,7 +260,6 @@ const Navbar = () => {
                   })
                   .catch((error) => {
                     // Handle errors if any
-                    console.error("Sign-out error:", error);
                   });
               }}
             />

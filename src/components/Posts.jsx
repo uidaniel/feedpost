@@ -32,7 +32,7 @@ const Posts = () => {
   const navigate = useNavigate();
 
   // const posts = useSelector((state)=> state.posts) || []
-  const fto = posts.slice(0, 3) || [];
+  const fto = posts.slice(2, 5) || [];
 
   const latestPost = posts[0] || [];
 
@@ -71,7 +71,7 @@ const Posts = () => {
 
       dispatch(updatePost(newPosts));
     } catch (error) {
-      console.error("Error fetching data:", error);
+      //s
     }
   };
 

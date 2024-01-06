@@ -113,7 +113,6 @@ const CreateFeed = () => {
           setSuccessMessage("Your Feed has been posted");
         }
       } catch (e) {
-        console.log("error");
         setButtonLoading(false);
       } finally {
         setIsSubmitting(false); // Reset isSubmitting when the submission is complete

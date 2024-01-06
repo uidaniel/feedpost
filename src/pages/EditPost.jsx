@@ -74,7 +74,6 @@ const EditPost = () => {
       });
 
       const particularUser = theUsers.filter((user) => user.Name == userName);
-      console.log(particularUser);
       particularUser.map((user) => setCurrentUserData(user.docID));
     };
 

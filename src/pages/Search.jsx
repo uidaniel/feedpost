@@ -14,7 +14,7 @@ const Search = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState(false);
   const [emptySearch, setEmptySearch] = useState(true);
-  const [noResults, setNoResults] = useState(false)
+  const [noResults, setNoResults] = useState(false);
 
   // const posts = useSelector((state)=> state.posts)
   const [posts, setPosts] = useState([]);
@@ -25,17 +25,16 @@ const Search = () => {
       const lowerCaseSearchValue = searchValue.toLowerCase().trim();
       return lowerCasePostTitle.includes(lowerCaseSearchValue);
     });
-    
-    if (searchParam.length === 0){
-      setNoResults(true)
-      setSearch(false)
+
+    if (searchParam.length === 0) {
+      setNoResults(true);
+      setSearch(false);
     } else {
       setSearchResults(searchParam);
       // alert(searchParam);
       setSearch(true);
       setEmptySearch(false);
     }
-    
   };
 
   const theFirebase = async () => {
@@ -48,10 +47,7 @@ const Search = () => {
       });
 
       setPosts(newPosts);
-      console.log(posts);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -62,12 +58,13 @@ const Search = () => {
   return (
     <section className="p-0 m-0">
       <Navbar />
-      <div
-        className="p-4 ps-6"
-      >
-        <IoIosArrowRoundBack size={50} onClick={() => {
-          navigate(-1);
-        }}/>
+      <div className="p-4 ps-6">
+        <IoIosArrowRoundBack
+          size={50}
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
       </div>
       <div className="w-[100%] p-5 pt-0">
         <div className="h-[60px] flex items-center justify-between gap-4">
@@ -78,8 +75,8 @@ const Search = () => {
             value={searchValue}
             onClick={() => {
               setSearch(false);
-              setNoResults(false)
-              setSearchResults([])
+              setNoResults(false);
+              setSearchResults([]);
             }}
             onChange={(e) => {
               setSearchValue(e.target.value);
@@ -99,11 +96,11 @@ const Search = () => {
         </div>
       )}
 
-        {noResults && (
-          <div className="h-[50px] w-[100%] bg-black text-white text-[25px] flex items-center justify-center font-bold">
+      {noResults && (
+        <div className="h-[50px] w-[100%] bg-black text-white text-[25px] flex items-center justify-center font-bold">
           No Results for "{searchValue}"
         </div>
-        )}
+      )}
 
       <div className="p-4">
         {emptySearch && (
@@ -111,34 +108,33 @@ const Search = () => {
             Search for something!
           </div>
         )}
-          <div>
-            {searchResults.map((post) => (
-          <div
-            className="flex gap-4 items-center mt-4 mb-6 border-b pb-6 border-[#cccccc]"
-            onClick={() => {
-              navigate(`/blog/${post.category}/${post.postId}`);
-            }}
+        <div>
+          {searchResults.map((post) => (
+            <div
+              className="flex gap-4 items-center mt-4 mb-6 border-b pb-6 border-[#cccccc]"
+              onClick={() => {
+                navigate(`/blog/${post.category}/${post.postId}`);
+              }}
             >
-            <div className="w-[auto] h-[auto] rounded-[10px] bg-red-100">
-              <img
-                src={post.postImage}
-                alt={post.postTitle}
-                className="max-w-[150px] max-h-[150px] rounded-[10px]"
-              />
+              <div className="w-[auto] h-[auto] rounded-[10px] bg-red-100">
+                <img
+                  src={post.postImage}
+                  alt={post.postTitle}
+                  className="max-w-[150px] max-h-[150px] rounded-[10px]"
+                />
+              </div>
+              <div className="flex flex-col gap-4">
+                <p className="text-[#FF2424] text-[20px] font-bold">
+                  {post.category}
+                </p>
+                <p className="font-bold w-[90%]">{post.postTitle}</p>
+                <p className="w-[100%]">
+                  {post.postAuthor} - {post.postDate}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-[#FF2424] text-[20px] font-bold">
-                {post.category}
-              </p>
-              <p className="font-bold w-[90%]">{post.postTitle}</p>
-              <p className="w-[100%]">
-                {post.postAuthor} - {post.postDate}
-              </p>
-            </div>
-          </div>
-        ))}
-          </div>
-        
+          ))}
+        </div>
       </div>
     </section>
   );

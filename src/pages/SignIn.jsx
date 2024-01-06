@@ -45,7 +45,6 @@ const SignIn = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setToastMessage(false);
-          console.log("signin in");
           setToastSuccessMessage(true);
           setButtonLoading(false);
           setSuccessMessage("Sign In Successful");
@@ -54,7 +53,6 @@ const SignIn = () => {
             navigate("/");
           }, 3000);
         } else {
-          console.log("not signed in");
           setToastMessage(true);
           setButtonLoading(false);
         }

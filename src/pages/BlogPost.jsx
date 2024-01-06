@@ -42,15 +42,11 @@ const BlogPost = () => {
         (theComment) => theComment.postId == postId
       );
       setComments(postComments);
-      console.log(postComments);
       setCommentCount(postComments.length);
-      console.log(theLikes);
       const pLikeCount = theLikes.filter((l) => l.postId == postId);
       setLikeArray(pLikeCount);
-      console.log(pLikeCount);
       setLikeCount(pLikeCount.length);
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -74,7 +70,6 @@ const BlogPost = () => {
         setCommentCount(commentCount + 1);
         await addDoc(collection(firestore, "CommentCount"), newComment);
       } catch (err) {
-        console.log(err);
       }
     } else {
       navigate("/signin");
@@ -84,6 +79,7 @@ const BlogPost = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [commentInput, setCommentInput] = useState("");
+  const { postId } = useParams();
 
   const userName = useSelector((state) => state.userName);
   const profilePicture = useSelector((state) => state.profilePicture);
@@ -97,28 +93,31 @@ const BlogPost = () => {
       });
 
       setPosts(newPosts);
-      console.log(posts);
     } catch (error) {
-      console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
     theFirebase();
     setCommentCount(comments.length);
-  }, []);
+  }, [postId]); // Adding postId as a dependency
+  
 
-  const { postId } = useParams();
+  
   const navigate = useNavigate();
 
   const existingPost = posts.filter((post) => post.postId == postId);
-  useEffect(()=> {
-    if(existingPost.length == 0){
-      setIsLoading(true)
-    } else {
-      setIsLoading(false)
-    }
-  }, [existingPost])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+      if (existingPost.length === 0) {
+        setIsLoading(true);
+      } else {
+        setIsLoading(false);
+      }
+    }, 2000);
+  }, [existingPost]);
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -152,7 +151,6 @@ const BlogPost = () => {
       try {
         await addDoc(collection(firestore, "LikeCount"), newLike);
       } catch (err) {
-        console.log(err);
       }
     }
 
@@ -169,7 +167,6 @@ const BlogPost = () => {
       setLikeArray(updatedPostLikes);
       setLikeCount(updatedPostLikes.length);
     } catch (err) {
-      console.log(err);
     }
   };
 
