@@ -21,14 +21,12 @@ const Search = () => {
 
   const handleSearchPost = () => {
     const searchParam = posts.filter((post) => {
-      const lowerCasePostTitle = post.postTitle && post.postTitle.toLowerCase().trim();
-      const lowerCaseSearchValue = searchValue && searchValue.toLowerCase().trim();
-      if (lowerCasePostTitle && lowerCaseSearchValue) {
-        return lowerCasePostTitle.includes(lowerCaseSearchValue);
-      }
-  
-      return false;
+      const lowerCasePostTitle = post.postTitle.toLowerCase();
+      const lowerCaseSearchValue = searchValue.toLowerCase();
+      console.log('postTitle:', lowerCasePostTitle, 'searchValue:', lowerCaseSearchValue);
+      return lowerCasePostTitle.includes(lowerCaseSearchValue);
     });
+    
   
     if (searchParam.length === 0) {
       setNoResults(true);

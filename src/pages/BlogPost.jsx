@@ -79,7 +79,7 @@ const BlogPost = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [commentInput, setCommentInput] = useState("");
-  const { postId } = useParams();
+  const { postId, category } = useParams();
 
   const userName = useSelector((state) => state.userName);
   const profilePicture = useSelector((state) => state.profilePicture);
@@ -106,7 +106,7 @@ const BlogPost = () => {
   
   const navigate = useNavigate();
 
-  const existingPost = posts.filter((post) => post.postId == postId);
+  const existingPost = posts.filter((post) => post.postId == postId && post.category == category);
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => {
