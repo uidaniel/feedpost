@@ -132,7 +132,8 @@ const Search = () => {
               </p>
             </div>
           </div>
-        {searchResults.map((post) => (
+          <div>
+          {searchResults.map((post) => (
           <div
             className="flex gap-4 items-center mt-4 mb-6 border-b pb-6 border-[#cccccc]"
             onClick={() => {
@@ -157,6 +158,8 @@ const Search = () => {
             </div>
           </div>
         ))}
+          </div>
+        
       </div>
     </section>
   );
