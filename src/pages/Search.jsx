@@ -14,6 +14,7 @@ const Search = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState(false);
   const [emptySearch, setEmptySearch] = useState(true);
+  const [noResults, setNoResults] = useState(false)
 
   // const posts = useSelector((state)=> state.posts)
   const [posts, setPosts] = useState([]);
@@ -22,10 +23,17 @@ const Search = () => {
     const searchParam = posts.filter((post) =>
       post.postTitle.toLowerCase().includes(searchValue)
     );
-    setSearchResults(searchParam);
-    console.log(searchParam);
-    setSearch(true);
-    setEmptySearch(false);
+    console.log(searchParam)
+    if (searchParam.length === 0){
+      setNoResults(true)
+      setSearch(false)
+    } else {
+      setSearchResults(searchParam);
+      console.log(searchParam);
+      setSearch(true);
+      setEmptySearch(false);
+    }
+    
   };
 
   const theFirebase = async () => {
@@ -54,11 +62,10 @@ const Search = () => {
       <Navbar />
       <div
         className="p-4 ps-6"
-        onClick={() => {
-          navigate(-1);
-        }}
       >
-        <IoIosArrowRoundBack size={50} />
+        <IoIosArrowRoundBack size={50} onClick={() => {
+          navigate(-1);
+        }}/>
       </div>
       <div className="w-[100%] p-5 pt-0">
         <div className="h-[60px] flex items-center justify-between gap-4">
@@ -69,6 +76,8 @@ const Search = () => {
             value={searchValue}
             onClick={() => {
               setSearch(false);
+              setNoResults(false)
+              setSearchResults([])
             }}
             onChange={(e) => {
               setSearchValue(e.target.value);
@@ -87,6 +96,12 @@ const Search = () => {
           Results for "{searchValue}"
         </div>
       )}
+
+        {noResults && (
+          <div className="h-[65px] w-[100%] bg-black text-white text-[40px] flex items-center justify-center font-bold">
+          No Results for "{searchValue}"
+        </div>
+        )}
 
       <div className="p-4">
         {emptySearch && (

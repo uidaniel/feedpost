@@ -15,6 +15,7 @@ import SyncLoader from "react-spinners/SyncLoader";
 
 //post author and post description
 import { useParams, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const BlogPost = () => {
   const [comments, setComments] = useState([]);
@@ -111,13 +112,27 @@ const BlogPost = () => {
   const navigate = useNavigate();
 
   const existingPost = posts.filter((post) => post.postId == postId);
+  useEffect(()=> {
+    if(existingPost.length == 0){
+      setIsLoading(true)
+    } else {
+      setIsLoading(false)
+    }
+  }, [existingPost])
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => {
-      if (existingPost) {
-        setIsLoading(false);
+      if(existingPost.length == 0){
+        setIsLoading(true)
+      } else {
+        setIsLoading(false)
       }
+      // if (existingPost) {
+      //   setIsLoading(false);
+      // } else {
+      //   setIsLoading(true)
+      // }
     }, 2000);
   }, []);
 
@@ -268,23 +283,7 @@ const BlogPost = () => {
         </div>
       )}
 
-      <footer className="bg-black h-[200px] relative">
-        <h1 className="text-white tracking-tighter text-[30px] font-bold ps-6 pt-4">
-          FEEDPOST
-        </h1>
-        <div className="p-6 flex gap-4">
-          <p className="text-white">Home</p>
-          <p className="text-white">Categories</p>
-          <p className="text-white">About FeedPost</p>
-          <p className="text-white">Contact</p>
-        </div>
-        <div className="absolute bottom-0 border-t-2 w-[100%] pt-[15px] pb-[15px] text-center">
-          <p className="text-white">
-            Copyright © 2024 |{" "}
-            <span className="text-[#FF2424]">Uwak Daniel</span>
-          </p>
-        </div>
-      </footer>
+      <Footer/>
     </section>
   );
 };

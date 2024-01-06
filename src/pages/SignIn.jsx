@@ -141,9 +141,11 @@ const SignIn = () => {
       </div>
       <div className="w-[100%] md:w-[50vw]">
         <div className="flex gap-5 items-center">
-          <Link to="/">
-            <IoIosArrowBack size={30} />
-          </Link>
+          <div>
+            <IoIosArrowBack size={30} onClick={()=> {
+              navigate(-1)
+            }}/>
+          </div>
           <img
             src="https://bafybeigfti5usy3rsztdbbqu2bnox4fbbvykrueijnmeoaw625xglbo7xq.ipfs.w3s.link/FeedPost Logo.svg"
             className="w-[150px]"

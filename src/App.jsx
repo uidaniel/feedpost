@@ -36,6 +36,16 @@ function App() {
         <Route path="/about" exact element={<About />}></Route>
         <Route path="/contact" exact element={<Contact />}></Route>
         <Route path='*' exact element={<Error404/>}></Route>
+        <Route
+          path="/blog/:category/*"
+          exact
+          element={<Error404 />}
+        ></Route>
+        <Route
+          path="/blog/*"
+          exact
+          element={<Error404 />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

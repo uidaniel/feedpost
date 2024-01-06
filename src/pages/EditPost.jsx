@@ -126,7 +126,7 @@ const EditPost = () => {
   };
 
   return (
-    <section>
+    <section className="w-[100vw] overflow-x-hidden">
       {toastSuccessMessage && (
         <motion.div
           initial={{ y: -1000 }}

@@ -114,7 +114,7 @@ const Navbar = () => {
                   </li>
                 </ul>
                 {currentUser && (
-                  <div className="flex items-center justify-between mt-[80vh]">
+                  <div className="flex items-center justify-between mt-[30vh]">
                     <div className="flex">
                       <div className="w-12 h-12 rounded-md bg-[#FFE4E4] flex justify-center items-center">
                         <img
