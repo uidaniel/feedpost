@@ -92,13 +92,13 @@ const Search = () => {
         </div>
       </div>
       {search && (
-        <div className="h-[65px] w-[100%] bg-black text-white text-[40px] flex items-center justify-center font-bold">
+        <div className="h-[50px] w-[100%] bg-black text-white text-[40px] flex items-center justify-center font-bold">
           Results for "{searchValue}"
         </div>
       )}
 
         {noResults && (
-          <div className="h-[65px] w-[100%] bg-black text-white text-[40px] flex items-center justify-center font-bold">
+          <div className="h-[50px] w-[100%] bg-black text-white text-[40px] flex items-center justify-center font-bold">
           No Results for "{searchValue}"
         </div>
         )}
@@ -109,13 +109,36 @@ const Search = () => {
             Search for something!
           </div>
         )}
+        <div
+            className="flex gap-4 items-center mt-4 mb-6 border-b pb-6 border-[#cccccc]"
+            onClick={() => {
+              navigate('/');
+            }}
+            >
+            <div className="w-[auto] h-[auto] rounded-[10px] bg-red-100">
+              <img
+                src=''
+                alt=''
+                className="max-w-[150px] max-h-[150px] rounded-[10px]"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-[#FF2424] text-[20px] font-bold">
+                Test
+              </p>
+              <p className="font-bold w-[90%]">test</p>
+              <p className="w-[100%]">
+                test
+              </p>
+            </div>
+          </div>
         {searchResults.map((post) => (
           <div
             className="flex gap-4 items-center mt-4 mb-6 border-b pb-6 border-[#cccccc]"
             onClick={() => {
               navigate(`/blog/${post.category}/${post.postId}`);
             }}
-          >
+            >
             <div className="w-[auto] h-[auto] rounded-[10px] bg-red-100">
               <img
                 src={post.postImage}
