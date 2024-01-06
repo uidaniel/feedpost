@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <footer className="bg-black h-[200px] relative">
+    <footer className="bg-black h-[200px] relative bottom-0 left-0 w-[100%]">
       <h1 className="text-white tracking-tighter text-[30px] font-bold ps-6 pt-4">
         FEEDPOST
       </h1>

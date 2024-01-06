@@ -183,7 +183,7 @@ const EditPost = () => {
       </div>
       <div className="p-5">
         <div className="flex gap-6 items-center">
-          <div className="min-w-[130px] min-h-[130px] rounded-full border mb-6 bg-white">
+          <div className="max-w-[130px] max-h-[130px] rounded-full border mb-6 bg-white">
             <img
               src={
                 profilepic

@@ -263,11 +263,16 @@ const CreateFeed = () => {
               <div
                 className="flex items-center text-[#FF2424]"
                 onClick={() => {
-                  const newArray = {
-                    text: tagText,
-                  };
-                  setTagArray([...tagArray, newArray]);
-                  settagText("");
+                  if (tagText.length > 0){
+                    const newArray = {
+                      text: tagText,
+                    };
+                    setTagArray([...tagArray, newArray]);
+                    settagText("");
+                  } else {
+                    setToastMessage(true)
+                    setErrorMessage('Please type a tag')
+                  }
                 }}
               >
                 <IoMdAdd color="#FF2424" />
@@ -275,7 +280,7 @@ const CreateFeed = () => {
               </div>
             </div>
             <div>
-              <div className="flex mt-4" id="tag-array">
+              <div className="flex mt-4 w-[100%] overflow-x-auto" id="tag-array">
                 {tagArray.map((tag) => (
                   <div className="w-auto ps-4 pe-4 gap-2 h-[40px] rounded-[6px] me-1 bg-[#fdd6d6] text-[#FF2424] flex items-center justify-center">
                     {tag.text}
