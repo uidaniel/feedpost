@@ -20,23 +20,27 @@ const Search = () => {
   const [posts, setPosts] = useState([]);
 
   const handleSearchPost = () => {
-    
     const searchParam = posts.filter((post) => {
-      const lowerCasePostTitle = post.postTitle.toLowerCase().trim();
-      const lowerCaseSearchValue = searchValue.toLowerCase().trim();
-      return lowerCasePostTitle.includes(lowerCaseSearchValue);
+      const lowerCasePostTitle = post.postTitle && post.postTitle.toLowerCase().trim();
+      const lowerCaseSearchValue = searchValue && searchValue.toLowerCase().trim();
+      if (lowerCasePostTitle && lowerCaseSearchValue) {
+        return lowerCasePostTitle.includes(lowerCaseSearchValue);
+      }
+  
+      return false;
     });
-
+  
     if (searchParam.length === 0) {
       setNoResults(true);
       setSearch(false);
     } else {
       setSearchResults(searchParam);
-      // alert(searchParam);
       setSearch(true);
       setEmptySearch(false);
     }
   };
+  
+  
 
   const theFirebase = async () => {
     try {
