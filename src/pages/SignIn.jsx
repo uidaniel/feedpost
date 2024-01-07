@@ -141,7 +141,7 @@ const SignIn = () => {
         <div className="flex gap-5 items-center">
           <div>
             <IoIosArrowBack size={30} onClick={()=> {
-              navigate(-1)
+              navigate('/')
             }}/>
           </div>
           <img

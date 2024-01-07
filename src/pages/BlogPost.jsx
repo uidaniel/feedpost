@@ -83,7 +83,9 @@ const BlogPost = () => {
 
   const userName = useSelector((state) => state.userName);
   const profilePicture = useSelector((state) => state.profilePicture);
-  const theFirebase = async () => {
+
+  useEffect(() => {
+    const theFirebase = async () => {
     try {
       const querySnapshot = await getDocs(collection(firestore, "posts"));
       const newPosts = [];
@@ -96,8 +98,6 @@ const BlogPost = () => {
     } catch (error) {
     }
   };
-
-  useEffect(() => {
     theFirebase();
     setCommentCount(comments.length);
   }, [postId]); // Adding postId as a dependency
@@ -106,7 +106,7 @@ const BlogPost = () => {
   
   const navigate = useNavigate();
 
-  const existingPost = posts.filter((post) => post.postId == postId && post.category == category);
+  const existingPost = posts.filter((post) => post.postId === postId && post.category === category);
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => {

@@ -67,6 +67,9 @@ const Navbar = () => {
             exit={{ x: -1000 }}
             transition={{ ease: "easeInOut", duration: 0.4 }}
             className="w-[100vw] h-[100vh] fixed top-0 left-0 z-[] bg-black/25"
+            onClick={()=> {
+              setIsDrawerOpen(false)
+            }}
           >
             <div className="w-[75vw] fixed top-0 left-0 bg-white h-[100vh] z-[40] ps-5 pe-5 pt-5">
               <div className="w-12 h-12 me-5 rounded-md bg-[#000] flex justify-center items-center md:hidden cursor-pointer text-[#fff]">

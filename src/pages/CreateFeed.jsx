@@ -73,53 +73,57 @@ const CreateFeed = () => {
   }
 
   const handleAddFeed = async () => {
-    if (isSubmitting) {
-      return; // Prevent multiple submissions
-    }
-
-    if (postTitle && postDescription && content && category && selectedImage) {
-      setButtonLoading(true);
-
-      const getCurrentDateFormatted = () => {
-        const currentDate = new Date();
-
-        const options = { month: "short", day: "numeric", year: "numeric" };
-        const formattedDate = currentDate.toLocaleDateString("en-US", options);
-
-        return formattedDate;
-      };
-
-      // Example usage:
-      const formattedDate = getCurrentDateFormatted();
-
-      const postId = posts.length;
-
-      try {
-        const docRef = await addDoc(collection(firestore, "posts"), {
-          postId: postId,
-          postAuthor: usersName,
-          postAuthorId: authorId,
-          postImage: selectedImage || "",
-          postTitle: postTitle,
-          postDescription: postDescription,
-          content: content,
-          category: category,
-          tags: tagArray,
-          postDate: formattedDate,
-        });
-        const documentID = docRef.id;
-        if (documentID) {
-          setToastSuccessMessage(true);
-          setSuccessMessage("Your Feed has been posted");
+    if (usersName){
+      if (isSubmitting) {
+        return; // Prevent multiple submissions
+      }
+  
+      if (postTitle && postDescription && content && category && selectedImage) {
+        setButtonLoading(true);
+  
+        const getCurrentDateFormatted = () => {
+          const currentDate = new Date();
+  
+          const options = { month: "short", day: "numeric", year: "numeric" };
+          const formattedDate = currentDate.toLocaleDateString("en-US", options);
+  
+          return formattedDate;
+        };
+  
+        // Example usage:
+        const formattedDate = getCurrentDateFormatted();
+  
+        const postId = posts.length;
+  
+        try {
+          const docRef = await addDoc(collection(firestore, "posts"), {
+            postId: postId,
+            postAuthor: usersName,
+            postAuthorId: authorId,
+            postImage: selectedImage || "",
+            postTitle: postTitle,
+            postDescription: postDescription,
+            content: content,
+            category: category,
+            tags: tagArray,
+            postDate: formattedDate,
+          });
+          const documentID = docRef.id;
+          if (documentID) {
+            setToastSuccessMessage(true);
+            setSuccessMessage("Your Feed has been posted");
+          }
+        } catch (e) {
+          setButtonLoading(false);
+        } finally {
+          setIsSubmitting(false); // Reset isSubmitting when the submission is complete
         }
-      } catch (e) {
-        setButtonLoading(false);
-      } finally {
-        setIsSubmitting(false); // Reset isSubmitting when the submission is complete
+      } else {
+        setToastMessage(true);
+        setErrorMessage("Please input all required details asterisked");
       }
     } else {
-      setToastMessage(true);
-      setErrorMessage("Please input all required details asterisked");
+      navigate('/signin')
     }
   };
 

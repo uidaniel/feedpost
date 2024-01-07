@@ -16,8 +16,7 @@ const Search = () => {
   const [emptySearch, setEmptySearch] = useState(true);
   const [noResults, setNoResults] = useState(false);
 
-  // const posts = useSelector((state)=> state.posts)
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector((state)=> state.posts)
 
   const handleSearchPost = () => {
     const searchParam = posts.filter((post) => {
