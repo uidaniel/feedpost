@@ -24,33 +24,32 @@ const BlogPost = () => {
   const [likeArray, setLikeArray] = useState([]);
   const [postiveLike, setPositiveLike] = useState(false);
 
-  const fetchComment = async () => {
-    try {
-      const fetchedComments = await getDocs(
-        collection(firestore, "interactions")
-      );
-      const fetchLike = await getDocs(collection(firestore, "LikeCount"));
-      let theComments = [];
-      let theLikes = [];
-      fetchLike.forEach((doc) => {
-        theLikes.unshift({ docId: doc.id, ...doc.data() });
-      });
-      fetchedComments.forEach((doc) => {
-        theComments.unshift(doc.data());
-      });
-      const postComments = theComments.filter(
-        (theComment) => theComment.postId == postId
-      );
-      setComments(postComments);
-      setCommentCount(postComments.length);
-      const pLikeCount = theLikes.filter((l) => l.postId == postId);
-      setLikeArray(pLikeCount);
-      setLikeCount(pLikeCount.length);
-    } catch (err) {
-    }
-  };
-
   useEffect(() => {
+    const fetchComment = async () => {
+      try {
+        const fetchedComments = await getDocs(
+          collection(firestore, "interactions")
+        );
+        const fetchLike = await getDocs(collection(firestore, "LikeCount"));
+        let theComments = [];
+        let theLikes = [];
+        fetchLike.forEach((doc) => {
+          theLikes.unshift({ docId: doc.id, ...doc.data() });
+        });
+        fetchedComments.forEach((doc) => {
+          theComments.unshift(doc.data());
+        });
+        const postComments = theComments.filter(
+          (theComment) => theComment.postId == postId
+        );
+        setComments(postComments);
+        setCommentCount(postComments.length);
+        const pLikeCount = theLikes.filter((l) => l.postId == postId);
+        setLikeArray(pLikeCount);
+        setLikeCount(pLikeCount.length);
+      } catch (err) {
+      }
+    };
     fetchComment();
   }, []);
 
